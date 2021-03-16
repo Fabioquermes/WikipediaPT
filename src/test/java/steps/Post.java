@@ -1,5 +1,8 @@
 package steps;
 
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
@@ -17,18 +20,18 @@ public class Post extends Base {
         this.base = base;
     }
 
-    @Dado("^que acesso a Wikipedia em Portugues$")
+    @Given("^que acesso a Wikipedia em Portugues$")
     public void queAcessoAWikipediaEmPortugues() {
         base.driver.get(base.url); //Abre o navegador no site alvo(extendendo da base)
     }
 
-    @Quando("^pesquiso por \"([^\"]*)\"$")
+    @When("^pesquiso por \"([^\"]*)\"$")
     public void pesquisoPor(String produto) {
         base.driver.findElement(By.id("searchInput")).sendKeys( produto + Keys.ENTER);
 
     }
 
-    @Entao("^exibe a expressao \"([^\"]*)\" no titulo da guia$")
+    @Then("^exibe a expressao \"([^\"]*)\" no titulo da guia$")
     public void exibeAExpressaoNoTituloDaGuia(String produto)  {
 
         WebDriverWait espera = new WebDriverWait(base.driver, 30); //wait = espera
